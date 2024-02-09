@@ -1,0 +1,24 @@
+/* HeroSlider.css */
+.hero-slider-container {
+  position: relative;
+}
+
+.slick-prev,
+.slick-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1; /* Ensure arrows are above the slides */
+}
+
+.slick-prev {
+  left: 10px; /* Adjust the distance from the left */
+}
+
+.slick-next {
+  right: 10px; /* Adjust the distance from the right */
+}
+.slick-prev::before,
+.slick-next::before {
+  display: none;
+}
