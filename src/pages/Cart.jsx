@@ -19,7 +19,7 @@ const Cart = () => {
   };
 
   return (
-    <>
+    <div className="container mx-auto">
       {totalAmount > 0 ? (
         <>
           <h2 className="text-center mt-10 text-pri">Cart</h2>
@@ -48,7 +48,7 @@ const Cart = () => {
         </div>
       )}
       {showPaymentData && <PaymentData />}
-    </>
+    </div>
   );
 };
 

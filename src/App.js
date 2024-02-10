@@ -6,7 +6,11 @@ import Layout from "./Layout/Layout";
 import Favorites from "./pages/Favorites";
 import CartContextProvider from "./context/CartContext";
 import ProductDetails from "./pages/ProductDetails";
-import PaymnetDone from './pages/PaymnetDone';
+import PaymnetDone from "./pages/PaymnetDone";
+import Login from "./pages/Login/Login";
+import Signin from "./pages/Signin/Signin";
+import ProtectedRoute from "./Guard/ProtectedRoutes";
+import UserContextProvider, { UserContext } from "./context/UserContext";
 
 function App() {
   const routers = createBrowserRouter([
@@ -20,7 +24,19 @@ function App() {
         },
         {
           path: "cart",
-          element: <Cart />,
+          element: (
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "login",
+          element: <Login />,
+        },
+        {
+          path: "signin",
+          element: <Signin />,
         },
         {
           path: "Favorites",
@@ -41,9 +57,11 @@ function App() {
 
   return (
     <>
-      <CartContextProvider>
-        <RouterProvider router={routers} />
-      </CartContextProvider>
+      <UserContextProvider>
+        <CartContextProvider>
+          <RouterProvider router={routers} />
+        </CartContextProvider>
+      </UserContextProvider>
     </>
   );
 }

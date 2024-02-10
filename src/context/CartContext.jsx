@@ -39,7 +39,6 @@ export default function CartContextProvider({ children }) {
   const taxRate = 0.08; // 8% tax rate
   const getTotalCartAmountFinal = () => {
     let totalAmount = 0;
-
     // Calculate total amount without tax and delivery
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
@@ -47,16 +46,12 @@ export default function CartContextProvider({ children }) {
         totalAmount += cartItems[item] * itemInfo.price;
       }
     }
-
     // Calculate tax
     const taxAmount = totalAmount * taxRate;
-
     // Calculate delivery cost
     const deliveryCost = 16; // Example delivery cost
-
     // Add tax and delivery to the total amount
     totalAmount += taxAmount + deliveryCost;
-
     return totalAmount.toFixed(2); // Return total amount rounded to 2 decimal places
   };
 
